@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Calculator {
-    public static String goodsList = "";
-    public static double sum = 0;
-    public static Scanner scanner = new Scanner(System.in);
-    public static void calculator(){
+    public String goodsList = "";
+    public double sum = 0;
+    public Scanner scanner = new Scanner(System.in);
+    public void start(){
         while(true) {
             System.out.println("Введите название товара:");
             String goods;
