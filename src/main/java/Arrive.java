@@ -8,18 +8,17 @@ public class Arrive {
 
         while (true) {
             if (!scanner.hasNextInt()) {
-                System.out.println("Введите целое число!");
+                System.out.println("Введите корректное число!");
                 scanner.next();
                 continue;
             }
 
-            int g = scanner.nextInt();
-            if (g <= 1) {
+            guestsCount = scanner.nextInt();
+            if (guestsCount <= 1) {
                 System.out.println("Введите корректное количество гостей(больше одного)!");
                 continue;
             }
 
-            guestsCount = g;
             break;
         }
 
@@ -27,14 +26,18 @@ public class Arrive {
         calculator.start();
         System.out.println("Добавленные товары:");
         System.out.println(calculator.goodsList);
-        double pricePerPerson = Math.floor(calculator.sum / guestsCount);
+        double pricePerPerson = calculator.sum / guestsCount;
 
         String postfix;
-        int lastDigit = (int) pricePerPerson % 10;
-        if (lastDigit >= 2 && lastDigit <= 4) {
+        int rounded = (int)Math.floor(pricePerPerson);
+        int lastDigit = rounded % 10;
+        int lastDigits = rounded % 100;
+        if (lastDigits >= 11 && lastDigits <=19){
+            postfix = "ей.";
+        } else if (lastDigit >= 2 && lastDigit <= 4) {
             postfix = "я.";
         } else if (lastDigit == 1) {
-            postfix = "ю.";
+            postfix = "ь.";
         } else {
             postfix = "ей.";
         }
